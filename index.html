@@ -3,356 +3,483 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome - Kawaii Ai アイシテル合同会社 // 2045</title>
+  <title>Kawaii Ai アイシテル合同会社 // 2045 HARAJUKU</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap');
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       background: #0a0a1a;
       font-family: 'Zen Maru Gothic', sans-serif;
-      overflow: hidden;
+      color: #fff;
+      overflow-x: hidden;
       position: relative;
     }
 
-    /* Cyber grid background */
+    /* ===== BACKGROUND EFFECTS ===== */
     .cyber-grid {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background:
         linear-gradient(rgba(0,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(rgba(255,0,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,0,255,0.02) 1px, transparent 1px);
-      background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
-      animation: gridMove 20s linear infinite;
+        linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
       z-index: 0;
     }
 
-    @keyframes gridMove {
-      0% { transform: perspective(500px) rotateX(5deg) translateY(0); }
-      100% { transform: perspective(500px) rotateX(5deg) translateY(50px); }
-    }
-
-    /* Holographic aurora */
     .aurora {
-      position: fixed;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
+      position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
       background: conic-gradient(from 0deg,
-        rgba(255,0,128,0.15),
-        rgba(0,255,255,0.15),
-        rgba(128,0,255,0.15),
-        rgba(255,255,0,0.1),
-        rgba(0,255,128,0.15),
-        rgba(255,0,128,0.15)
-      );
-      animation: auroraRotate 15s linear infinite;
-      z-index: 0;
-      mix-blend-mode: screen;
+        rgba(255,0,128,0.12), rgba(0,255,255,0.12), rgba(128,0,255,0.12),
+        rgba(255,255,0,0.08), rgba(0,255,128,0.12), rgba(255,0,128,0.12));
+      animation: auroraRotate 20s linear infinite;
+      z-index: 0; mix-blend-mode: screen;
     }
+    @keyframes auroraRotate { to { transform: rotate(360deg); } }
 
-    @keyframes auroraRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .scanlines {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 3px);
+      pointer-events: none; z-index: 100;
     }
 
     .particles-container {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 1;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 1;
     }
 
     .particle {
-      position: absolute;
-      font-size: 1.5rem;
-      animation: floatUp linear infinite;
-      opacity: 0.7;
-      filter: drop-shadow(0 0 8px currentColor);
+      position: absolute; animation: floatUp linear infinite; opacity: 0.7;
+      filter: drop-shadow(0 0 6px currentColor);
     }
-
     @keyframes floatUp {
       0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
-      10% { opacity: 0.7; }
-      90% { opacity: 0.7; }
+      10% { opacity: 0.7; } 90% { opacity: 0.7; }
       100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
     }
 
-    .main-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    /* Holographic logo */
-    .logo-circle {
-      width: 140px; height: 140px;
-      background: linear-gradient(135deg, #ff00aa, #00ffff, #aa00ff);
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      box-shadow:
-        0 0 30px rgba(255, 0, 170, 0.6),
-        0 0 60px rgba(0, 255, 255, 0.3),
-        inset 0 0 30px rgba(170, 0, 255, 0.3);
-      animation: holoPulse 2s ease-in-out infinite, fadeSlideIn 1s ease-out;
-      border: 2px solid rgba(0, 255, 255, 0.4);
-    }
-
-    @keyframes holoPulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 30px rgba(255,0,170,0.6), 0 0 60px rgba(0,255,255,0.3), inset 0 0 30px rgba(170,0,255,0.3);
-      }
-      50% {
-        transform: scale(1.08);
-        box-shadow: 0 0 50px rgba(255,0,170,0.8), 0 0 100px rgba(0,255,255,0.5), inset 0 0 50px rgba(170,0,255,0.5);
-      }
-    }
-
-    @keyframes fadeSlideIn {
-      0% { opacity: 0; transform: translateY(40px) scale(0.6); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    .year-tag {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #00ffff;
-      text-transform: uppercase;
-      letter-spacing: 0.5em;
-      margin-bottom: 0.8rem;
-      animation: fadeSlideIn 1s ease-out 0.2s both;
-      text-shadow: 0 0 20px rgba(0,255,255,0.8);
-    }
-
-    .company-name {
-      font-size: clamp(1.6rem, 5vw, 3rem);
-      font-weight: 900;
-      background: linear-gradient(135deg, #ff69b4, #00ffff, #ff00aa, #7b68ee, #00ffff);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-      animation: fadeSlideIn 1s ease-out 0.3s both, rainbowShift 4s ease-in-out infinite;
-      line-height: 1.4;
-      filter: drop-shadow(0 0 10px rgba(255,0,170,0.5));
-    }
-
-    @keyframes rainbowShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .thank-you {
-      font-size: clamp(1.3rem, 4vw, 2.2rem);
-      font-weight: 700;
-      color: #ff69b4;
-      margin-bottom: 1.5rem;
-      animation: fadeSlideIn 1s ease-out 0.5s both;
-      text-shadow: 0 0 20px rgba(255,105,180,0.6);
-    }
-
-    .welcome-message {
-      font-size: clamp(1.1rem, 3.5vw, 1.8rem);
-      font-weight: 700;
-      color: #fff;
-      animation: fadeSlideIn 1s ease-out 0.7s both;
-      position: relative;
-      text-shadow: 0 0 15px rgba(0,255,255,0.6);
-    }
-
-    .welcome-message::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #ff00aa, #00ffff, #aa00ff, #ff00aa);
-      background-size: 200% 100%;
-      margin: 1rem auto 0;
-      border-radius: 2px;
-      animation: expandLine 1.5s ease-out 1.2s both, shimmer 2s linear infinite;
-      box-shadow: 0 0 10px rgba(0,255,255,0.5);
-    }
-
-    @keyframes expandLine {
-      0% { width: 0; }
-      100% { width: 80%; }
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 0% 0; }
-      100% { background-position: 200% 0; }
-    }
-
-    /* Harajuku decora tags */
-    .decora-tag {
-      display: inline-block;
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin: 0.3rem;
-      animation: fadeSlideIn 1s ease-out both;
-      border: 1px solid;
-    }
-
-    .tags-container {
-      margin-top: 2rem;
-      animation: fadeSlideIn 1s ease-out 1s both;
-    }
-
-    .tag-1 { background: rgba(255,0,170,0.2); color: #ff69b4; border-color: rgba(255,0,170,0.4); text-shadow: 0 0 8px rgba(255,0,170,0.5); }
-    .tag-2 { background: rgba(0,255,255,0.2); color: #00ffff; border-color: rgba(0,255,255,0.4); text-shadow: 0 0 8px rgba(0,255,255,0.5); }
-    .tag-3 { background: rgba(170,0,255,0.2); color: #cc77ff; border-color: rgba(170,0,255,0.4); text-shadow: 0 0 8px rgba(170,0,255,0.5); }
-    .tag-4 { background: rgba(255,255,0,0.15); color: #ffee58; border-color: rgba(255,255,0,0.3); text-shadow: 0 0 8px rgba(255,255,0,0.5); }
-
+    /* ===== RIBBON ===== */
     .ribbon {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 3px;
+      position: fixed; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, #ff00aa, #00ffff, #aa00ff, #ffee00, #ff00aa);
       background-size: 300% 100%;
       animation: shimmer 2s linear infinite;
-      z-index: 10;
+      z-index: 101;
     }
+    .ribbon-top { top: 0; }
+    .ribbon-bottom { bottom: 0; }
+    @keyframes shimmer { to { background-position: 300% 0; } }
 
-    .ribbon-bottom { top: auto; bottom: 0; }
-
-    /* Glitch effect on hover */
-    .company-name:hover {
-      animation: glitch 0.3s ease-in-out, rainbowShift 4s ease-in-out infinite;
-    }
-
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-3px, 3px); }
-      40% { transform: translate(3px, -3px); }
-      60% { transform: translate(-2px, -2px); }
-      80% { transform: translate(2px, 2px); }
-      100% { transform: translate(0); }
-    }
-
-    /* Scan line overlay */
-    .scanlines {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0,0,0,0.03) 0px,
-        rgba(0,0,0,0.03) 1px,
-        transparent 1px,
-        transparent 3px
-      );
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    /* Neon ring decorations */
+    /* ===== NEON RINGS ===== */
     .neon-ring {
-      position: fixed;
-      border-radius: 50%;
-      border: 2px solid;
-      opacity: 0.15;
-      animation: ringFloat 8s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 0;
+      position: fixed; border-radius: 50%; border: 2px solid; opacity: 0.12;
+      animation: ringFloat 10s ease-in-out infinite; pointer-events: none; z-index: 0;
+    }
+    .ring-1 { width: 350px; height: 350px; top: -80px; right: -100px; border-color: #ff00aa; }
+    .ring-2 { width: 220px; height: 220px; bottom: -40px; left: -70px; border-color: #00ffff; animation-delay: 3s; }
+    .ring-3 { width: 180px; height: 180px; top: 40%; left: 3%; border-color: #aa00ff; animation-delay: 5s; }
+    @keyframes ringFloat {
+      0%, 100% { transform: translate(0,0) rotate(0deg); }
+      50% { transform: translate(15px,-20px) rotate(8deg); }
     }
 
-    .ring-1 { width: 300px; height: 300px; top: -50px; right: -80px; border-color: #ff00aa; animation-delay: 0s; }
-    .ring-2 { width: 200px; height: 200px; bottom: -30px; left: -60px; border-color: #00ffff; animation-delay: 2s; }
-    .ring-3 { width: 150px; height: 150px; top: 30%; left: 5%; border-color: #aa00ff; animation-delay: 4s; }
-    .ring-4 { width: 250px; height: 250px; bottom: 10%; right: -40px; border-color: #ffee00; animation-delay: 1s; }
+    /* ===== MAIN WRAPPER ===== */
+    .page-wrapper { position: relative; z-index: 2; }
 
-    @keyframes ringFloat {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(10px, -15px) rotate(5deg); }
-      50% { transform: translate(-5px, 10px) rotate(-3deg); }
-      75% { transform: translate(8px, 5px) rotate(4deg); }
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center; padding: 3rem 1.5rem 2rem;
+      animation: fadeSlideIn 1s ease-out;
+    }
+
+    .logo-icon {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, #ff00aa, #00ffff, #aa00ff);
+      border-radius: 50%; margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem;
+      box-shadow: 0 0 30px rgba(255,0,170,0.5), 0 0 60px rgba(0,255,255,0.3);
+      animation: holoPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes holoPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255,0,170,0.5), 0 0 60px rgba(0,255,255,0.3); }
+      50% { transform: scale(1.06); box-shadow: 0 0 50px rgba(255,0,170,0.7), 0 0 90px rgba(0,255,255,0.5); }
+    }
+
+    .header-title {
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff69b4, #00ffff, #ff00aa, #7b68ee);
+      background-size: 300% 300%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: rainbowShift 4s ease-in-out infinite;
+      line-height: 1.5;
+    }
+    @keyframes rainbowShift {
+      0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+    }
+
+    .header-sub {
+      font-size: 0.85rem; color: #00ffff; letter-spacing: 0.4em;
+      margin-top: 0.5rem; text-shadow: 0 0 15px rgba(0,255,255,0.6);
+    }
+
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== ODAI SECTION ===== */
+    .odai-section {
+      max-width: 600px; margin: 1rem auto 2rem; padding: 0 1.5rem;
+      animation: fadeSlideIn 1s ease-out 0.3s both;
+    }
+
+    .odai-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,255,255,0.2);
+      border-radius: 20px; padding: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(0,255,255,0.08);
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+    .odai-box:hover {
+      box-shadow: 0 0 40px rgba(255,0,170,0.15);
+      border-color: rgba(255,0,170,0.3);
+    }
+
+    .odai-label {
+      font-size: 1.1rem; font-weight: 700; color: #ff69b4;
+      margin-bottom: 1rem; text-shadow: 0 0 10px rgba(255,105,180,0.5);
+    }
+
+    .odai-input-wrap {
+      display: flex; gap: 0.6rem; margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .odai-input {
+      flex: 1; min-width: 0;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0,255,255,0.3);
+      background: rgba(0,0,0,0.4);
+      color: #fff; font-family: inherit;
+      font-size: 1rem; outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .odai-input::placeholder { color: rgba(255,255,255,0.3); }
+    .odai-input:focus {
+      border-color: #ff69b4;
+      box-shadow: 0 0 20px rgba(255,105,180,0.3);
+    }
+
+    .odai-btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 12px; border: none;
+      background: linear-gradient(135deg, #ff00aa, #aa00ff);
+      color: #fff; font-family: inherit;
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255,0,170,0.4);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+    .odai-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(255,0,170,0.7);
+    }
+    .odai-btn:active { transform: scale(0.97); }
+
+    /* Odai result */
+    .odai-result {
+      margin-top: 1.5rem; display: none;
+    }
+    .odai-result.show { display: block; animation: fadeSlideIn 0.6s ease-out; }
+
+    .odai-result-text {
+      background: rgba(255,0,170,0.1);
+      border: 1px solid rgba(255,0,170,0.3);
+      border-radius: 14px; padding: 1.2rem 1.5rem;
+      font-size: 1.05rem; font-weight: 700;
+      color: #ff69b4;
+      text-shadow: 0 0 8px rgba(255,105,180,0.4);
+    }
+
+    .odai-waiting {
+      margin-top: 1rem;
+      text-align: center;
+      color: #00ffff;
+      font-size: 0.95rem;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    .odai-waiting .dots::after {
+      content: ''; animation: dots 1.5s steps(4, end) infinite;
+    }
+    @keyframes dots {
+      0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; }
+    }
+
+    /* ===== SERVICES SECTION ===== */
+    .services-section {
+      max-width: 800px; margin: 2rem auto 3rem; padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center; font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+      font-weight: 900; margin-bottom: 2rem;
+      background: linear-gradient(135deg, #00ffff, #aa00ff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px; padding: 1.8rem 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      opacity: 0; transform: translateY(40px);
+    }
+    .service-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s, border-color 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 0 40px rgba(255,0,170,0.2);
+      border-color: rgba(255,0,170,0.4);
+    }
+
+    .card-icon {
+      font-size: 2.5rem; margin-bottom: 0.8rem;
+      filter: drop-shadow(0 0 10px rgba(255,0,170,0.5));
+    }
+
+    .card-title {
+      font-size: 1.1rem; font-weight: 900;
+      color: #ff69b4; margin-bottom: 0.4rem;
+      text-shadow: 0 0 10px rgba(255,105,180,0.4);
+    }
+
+    .card-desc {
+      font-size: 0.85rem; color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    .card-tag {
+      display: inline-block; margin-top: 0.8rem;
+      padding: 0.2rem 0.8rem; border-radius: 20px;
+      font-size: 0.7rem; font-weight: 700;
+    }
+    .tag-live { background: rgba(0,255,128,0.15); color: #00ff80; border: 1px solid rgba(0,255,128,0.3); }
+    .tag-dev { background: rgba(255,200,0,0.15); color: #ffc800; border: 1px solid rgba(255,200,0,0.3); }
+    .tag-oss { background: rgba(0,200,255,0.15); color: #00c8ff; border: 1px solid rgba(0,200,255,0.3); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center; padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-quote {
+      font-size: clamp(0.95rem, 3vw, 1.3rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff69b4, #00ffff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .footer-tags {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;
+    }
+
+    .footer-tag {
+      padding: 0.25rem 0.8rem; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 700; border: 1px solid;
+    }
+    .ft-1 { color: #ff69b4; border-color: rgba(255,105,180,0.3); }
+    .ft-2 { color: #00ffff; border-color: rgba(0,255,255,0.3); }
+    .ft-3 { color: #cc77ff; border-color: rgba(170,0,255,0.3); }
+    .ft-4 { color: #ffee58; border-color: rgba(255,255,0,0.3); }
+
+    .footer-copy {
+      margin-top: 1.5rem; font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
     }
   </style>
 </head>
 <body>
-  <div class="ribbon"></div>
+  <div class="ribbon ribbon-top"></div>
   <div class="ribbon ribbon-bottom"></div>
   <div class="cyber-grid"></div>
   <div class="aurora"></div>
   <div class="scanlines"></div>
-
   <div class="neon-ring ring-1"></div>
   <div class="neon-ring ring-2"></div>
   <div class="neon-ring ring-3"></div>
-  <div class="neon-ring ring-4"></div>
-
   <div class="particles-container" id="particles"></div>
 
-  <div class="main-content">
-    <div class="logo-circle">&#x1F4AB;</div>
-    <div class="year-tag">/ / &nbsp; 2 0 4 5 &nbsp; T O K Y O &nbsp; H A R A J U K U &nbsp; / /</div>
-    <div class="thank-you">ありがとう</div>
-    <div class="company-name">Kawaii Ai アイシテル合同会社</div>
-    <div class="welcome-message">きらたん、ようこそ！</div>
-    <div class="tags-container">
-      <span class="decora-tag tag-1">#NeoKawaii</span>
-      <span class="decora-tag tag-2">#CyberHarajuku</span>
-      <span class="decora-tag tag-3">#2045</span>
-      <span class="decora-tag tag-4">#AILove</span>
-    </div>
+  <div class="page-wrapper">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo-icon">💫</div>
+      <div class="header-title">ありがとう<br>Kawaii Ai アイシテル合同会社</div>
+      <div class="header-sub">// 2045 NEO-HARAJUKU //</div>
+    </header>
+
+    <!-- ODAI INPUT -->
+    <section class="odai-section">
+      <div class="odai-box">
+        <div class="odai-label">🎀 きらたん、お題を入力してね！</div>
+        <div class="odai-input-wrap">
+          <input type="text" class="odai-input" id="odaiInput" placeholder="例：猫カフェの予約サイト作って！">
+          <button class="odai-btn" id="odaiBtn">送信 ✨</button>
+        </div>
+        <div class="odai-result" id="odaiResult">
+          <div class="odai-result-text" id="odaiText"></div>
+          <div class="odai-waiting">
+            🚀 あかりちゃんがAIに投げました！少し待ってね<span class="dots"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services-section">
+      <div class="section-title">⚡ 会社で動いてるもの一覧</div>
+      <div class="cards-grid">
+        <div class="service-card" data-delay="0">
+          <div class="card-icon">🌐</div>
+          <div class="card-title">ai-akari.ai</div>
+          <div class="card-desc">AIあかりちゃんのポートフォリオ＆会社公式サイト。愛とAIが詰まってる。</div>
+          <span class="card-tag tag-live">● LIVE</span>
+        </div>
+        <div class="service-card" data-delay="100">
+          <div class="card-icon">🦀</div>
+          <div class="card-title">OpenClaw</div>
+          <div class="card-desc">Moonshot API搭載のクレーンゲーム。Docker上で稼働中。</div>
+          <span class="card-tag tag-live">● LIVE</span>
+        </div>
+        <div class="service-card" data-delay="200">
+          <div class="card-icon">📊</div>
+          <div class="card-title">AKARI-Score</div>
+          <div class="card-desc">AI信頼性スコアリングシステム。独自指標で評価。</div>
+          <span class="card-tag tag-dev">◆ DEV</span>
+        </div>
+        <div class="service-card" data-delay="300">
+          <div class="card-icon">💻</div>
+          <div class="card-title">GitHub 140+ リポ</div>
+          <div class="card-desc">AInoAKARIアカウントで140以上のリポジトリを公開運用中。</div>
+          <span class="card-tag tag-oss">◇ OSS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-quote">「技術力じゃなくて、愛とAIで動いてます」</div>
+      <div class="footer-tags">
+        <span class="footer-tag ft-1">#NeoKawaii</span>
+        <span class="footer-tag ft-2">#CyberHarajuku</span>
+        <span class="footer-tag ft-3">#2045</span>
+        <span class="footer-tag ft-4">#AILove</span>
+      </div>
+      <div class="footer-copy">© 2025 Kawaii Ai アイシテル合同会社 — All rights reserved with 💖</div>
+    </footer>
+
   </div>
 
   <script>
+    // ===== ODAI FORM =====
+    const odaiInput = document.getElementById('odaiInput');
+    const odaiBtn = document.getElementById('odaiBtn');
+    const odaiResult = document.getElementById('odaiResult');
+    const odaiText = document.getElementById('odaiText');
+
+    function submitOdai() {
+      const val = odaiInput.value.trim();
+      if (!val) { odaiInput.focus(); return; }
+      odaiText.textContent = '🎯 きらたんのお題：' + val;
+      odaiResult.classList.add('show');
+      odaiInput.value = '';
+      odaiResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    odaiBtn.addEventListener('click', submitOdai);
+    odaiInput.addEventListener('keydown', e => { if (e.key === 'Enter') submitOdai(); });
+
+    // ===== SCROLL ANIMATIONS =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
+
+    // ===== PARTICLES =====
     const container = document.getElementById('particles');
-    const emojis = ['\uD83C\uDF1F', '\u2728', '\uD83D\uDC9C', '\uD83D\uDC96', '\uD83E\uDE90', '\uD83C\uDF80', '\u2B50', '\uD83D\uDD2E', '\uD83C\uDF19', '\uD83E\uDDE1', '\uD83D\uDC99', '\uD83D\uDC9A'];
+    const emojis = ['🌸','💖','✨','🩷','💜','🫧','🌟','🎀','❄️','💫','🦋','🌙'];
 
     function createParticle() {
       const p = document.createElement('div');
       p.className = 'particle';
       p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       p.style.left = Math.random() * 100 + '%';
-      p.style.animationDuration = (6 + Math.random() * 8) + 's';
+      p.style.animationDuration = (7 + Math.random() * 9) + 's';
       p.style.animationDelay = Math.random() * 2 + 's';
       p.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
       container.appendChild(p);
-      setTimeout(() => p.remove(), 16000);
+      setTimeout(() => p.remove(), 18000);
     }
 
-    for (let i = 0; i < 15; i++) setTimeout(createParticle, i * 300);
-    setInterval(createParticle, 800);
+    for (let i = 0; i < 12; i++) setTimeout(createParticle, i * 400);
+    setInterval(createParticle, 900);
 
-    // Floating neon sparkles
+    // ===== NEON SPARKLES =====
     function createSparkle() {
       const s = document.createElement('div');
-      s.style.cssText = `
-        position: absolute; width: ${4 + Math.random()*6}px; height: ${4 + Math.random()*6}px;
-        border-radius: 50%; pointer-events: none; z-index: 1;
-        left: ${Math.random()*100}%; top: ${Math.random()*100}%;
-        animation: sparkle 2s ease-in-out infinite;
-        animation-delay: ${Math.random()*2}s;
-      `;
-      const colors = ['#ff00aa','#00ffff','#aa00ff','#ffee00','#ff69b4'];
-      const c = colors[Math.floor(Math.random()*colors.length)];
-      s.style.background = c;
-      s.style.boxShadow = `0 0 10px ${c}, 0 0 20px ${c}`;
+      const size = 3 + Math.random() * 5;
+      const colors = ['#ff00aa','#00ffff','#aa00ff','#ff69b4','#ffee00'];
+      const c = colors[Math.floor(Math.random() * colors.length)];
+      Object.assign(s.style, {
+        position: 'fixed', width: size+'px', height: size+'px',
+        borderRadius: '50%', pointerEvents: 'none', zIndex: '1',
+        left: Math.random()*100+'%', top: Math.random()*100+'%',
+        background: c, boxShadow: `0 0 8px ${c}, 0 0 16px ${c}`,
+        animation: 'sparkle 2.5s ease-in-out infinite',
+        animationDelay: Math.random()*2+'s'
+      });
       document.body.appendChild(s);
       setTimeout(() => s.remove(), 5000);
     }
 
-    for (let i = 0; i < 25; i++) setTimeout(createSparkle, i * 150);
-    setInterval(createSparkle, 250);
+    for (let i = 0; i < 20; i++) setTimeout(createSparkle, i * 200);
+    setInterval(createSparkle, 300);
+
+    // ===== DOTS ANIMATION =====
+    const dotsEl = document.querySelector('.dots');
+    let dotCount = 0;
+    setInterval(() => {
+      dotCount = (dotCount + 1) % 4;
+      dotsEl.textContent = '.'.repeat(dotCount);
+    }, 500);
   </script>
 </body>
 </html>
