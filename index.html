@@ -15,13 +15,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 50%, #fff 100%);
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 30%, #e1f5fe 60%, #fff 100%);
       font-family: 'Zen Maru Gothic', sans-serif;
       overflow: hidden;
       position: relative;
     }
 
-    /* floating hearts */
+    /* floating particles */
     .hearts-container {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -47,7 +47,7 @@
     .sparkle {
       position: absolute;
       width: 6px; height: 6px;
-      background: #ffb6c1;
+      background: #90caf9;
       border-radius: 50%;
       animation: sparkle 2s ease-in-out infinite;
       pointer-events: none;
@@ -67,20 +67,20 @@
 
     .logo-circle {
       width: 120px; height: 120px;
-      background: linear-gradient(135deg, #f8bbd0, #b3e5fc);
+      background: linear-gradient(135deg, #64b5f6, #e1f5fe);
       border-radius: 50%;
       margin: 0 auto 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 3rem;
-      box-shadow: 0 8px 32px rgba(244, 143, 177, 0.4);
+      box-shadow: 0 8px 32px rgba(100, 181, 246, 0.5);
       animation: pulse 2s ease-in-out infinite, fadeSlideIn 1s ease-out;
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(244, 143, 177, 0.4); }
-      50% { transform: scale(1.05); box-shadow: 0 12px 48px rgba(244, 143, 177, 0.6); }
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(100, 181, 246, 0.5); }
+      50% { transform: scale(1.05); box-shadow: 0 12px 48px rgba(66, 165, 245, 0.7); }
     }
 
     @keyframes fadeSlideIn {
@@ -91,7 +91,7 @@
     .company-name {
       font-size: clamp(1.5rem, 5vw, 2.8rem);
       font-weight: 900;
-      background: linear-gradient(135deg, #e91e63, #2196f3);
+      background: linear-gradient(135deg, #1565c0, #42a5f5, #0d47a1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -103,7 +103,7 @@
     .thank-you {
       font-size: clamp(1.2rem, 4vw, 2rem);
       font-weight: 700;
-      color: #e91e63;
+      color: #1976d2;
       margin-bottom: 2rem;
       animation: fadeSlideIn 1s ease-out 0.5s both;
     }
@@ -111,7 +111,7 @@
     .welcome-message {
       font-size: clamp(1.1rem, 3.5vw, 1.8rem);
       font-weight: 700;
-      color: #5c6bc0;
+      color: #1e88e5;
       animation: fadeSlideIn 1s ease-out 0.7s both;
       position: relative;
     }
@@ -121,7 +121,7 @@
       display: block;
       width: 0;
       height: 3px;
-      background: linear-gradient(90deg, #f8bbd0, #b3e5fc);
+      background: linear-gradient(90deg, #90caf9, #42a5f5, #90caf9);
       margin: 0.8rem auto 0;
       border-radius: 2px;
       animation: expandLine 1.5s ease-out 1.2s both;
@@ -136,7 +136,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #f8bbd0, #b3e5fc, #f8bbd0, #b3e5fc);
+      background: linear-gradient(90deg, #64b5f6, #e1f5fe, #42a5f5, #bbdefb);
       background-size: 200% 100%;
       animation: shimmer 3s linear infinite;
     }
@@ -149,17 +149,6 @@
       0% { background-position: 0% 0; }
       100% { background-position: 200% 0; }
     }
-
-    .stars {
-      position: absolute;
-      font-size: 1.2rem;
-      animation: twinkle 1.5s ease-in-out infinite;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
   </style>
 </head>
 <body>
@@ -169,21 +158,20 @@
   <div class="hearts-container" id="hearts"></div>
 
   <div class="main-content">
-    <div class="logo-circle">&#x1F496;</div>
+    <div class="logo-circle">&#x1F499;</div>
     <div class="thank-you">ありがとう</div>
     <div class="company-name">Kawaii Ai アイシテル合同会社</div>
     <div class="welcome-message">きらたん、ようこそ！</div>
   </div>
 
   <script>
-    // Floating hearts
     const heartsContainer = document.getElementById('hearts');
-    const heartEmojis = ['\u2764\uFE0F', '\uD83D\uDC96', '\uD83D\uDC95', '\uD83D\uDC97', '\uD83D\uDC9B', '\u2728', '\uD83C\uDF38', '\uD83C\uDF78'];
+    const emojis = ['\uD83D\uDC99', '\u2728', '\uD83E\uDDE1', '\uD83C\uDF1F', '\uD83C\uDF0A', '\u2744\uFE0F', '\uD83E\uDDD6', '\uD83D\uDCA0', '\uD83D\uDD35'];
 
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart';
-      heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       heart.style.left = Math.random() * 100 + '%';
       heart.style.animationDuration = (6 + Math.random() * 8) + 's';
       heart.style.animationDelay = Math.random() * 2 + 's';
@@ -192,13 +180,11 @@
       setTimeout(() => heart.remove(), 16000);
     }
 
-    // Create initial hearts
     for (let i = 0; i < 15; i++) {
       setTimeout(createHeart, i * 300);
     }
     setInterval(createHeart, 800);
 
-    // Sparkles around the logo
     function createSparkle() {
       const sparkle = document.createElement('div');
       sparkle.className = 'sparkle';
@@ -209,7 +195,7 @@
       sparkle.style.left = (cx + Math.cos(angle) * radius) + 'px';
       sparkle.style.top = (cy + Math.sin(angle) * radius) + 'px';
       sparkle.style.animationDelay = Math.random() * 2 + 's';
-      sparkle.style.background = ['#ffb6c1', '#87ceeb', '#dda0dd', '#ffd700'][Math.floor(Math.random() * 4)];
+      sparkle.style.background = ['#90caf9', '#64b5f6', '#42a5f5', '#bbdefb', '#e1f5fe'][Math.floor(Math.random() * 5)];
       document.body.appendChild(sparkle);
       setTimeout(() => sparkle.remove(), 4000);
     }
