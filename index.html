@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome - Kawaii Ai アイシテル合同会社</title>
+  <title>Welcome - Kawaii Ai アイシテル合同会社 // 2045</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap');
 
@@ -15,105 +15,164 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 30%, #e1f5fe 60%, #fff 100%);
+      background: #0a0a1a;
       font-family: 'Zen Maru Gothic', sans-serif;
       overflow: hidden;
       position: relative;
     }
 
-    /* floating particles */
-    .hearts-container {
+    /* Cyber grid background */
+    .cyber-grid {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
+      background:
+        linear-gradient(rgba(0,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255,0,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,255,0.02) 1px, transparent 1px);
+      background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+      animation: gridMove 20s linear infinite;
       z-index: 0;
     }
 
-    .heart {
+    @keyframes gridMove {
+      0% { transform: perspective(500px) rotateX(5deg) translateY(0); }
+      100% { transform: perspective(500px) rotateX(5deg) translateY(50px); }
+    }
+
+    /* Holographic aurora */
+    .aurora {
+      position: fixed;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 0deg,
+        rgba(255,0,128,0.15),
+        rgba(0,255,255,0.15),
+        rgba(128,0,255,0.15),
+        rgba(255,255,0,0.1),
+        rgba(0,255,128,0.15),
+        rgba(255,0,128,0.15)
+      );
+      animation: auroraRotate 15s linear infinite;
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes auroraRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .particles-container {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
       position: absolute;
       font-size: 1.5rem;
       animation: floatUp linear infinite;
-      opacity: 0.6;
+      opacity: 0.7;
+      filter: drop-shadow(0 0 8px currentColor);
     }
 
     @keyframes floatUp {
       0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.6; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
       100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
-    }
-
-    /* sparkle particles */
-    .sparkle {
-      position: absolute;
-      width: 6px; height: 6px;
-      background: #90caf9;
-      border-radius: 50%;
-      animation: sparkle 2s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes sparkle {
-      0%, 100% { opacity: 0; transform: scale(0); }
-      50% { opacity: 1; transform: scale(1); }
     }
 
     .main-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       text-align: center;
       padding: 2rem;
     }
 
+    /* Holographic logo */
     .logo-circle {
-      width: 120px; height: 120px;
-      background: linear-gradient(135deg, #64b5f6, #e1f5fe);
+      width: 140px; height: 140px;
+      background: linear-gradient(135deg, #ff00aa, #00ffff, #aa00ff);
       border-radius: 50%;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
-      box-shadow: 0 8px 32px rgba(100, 181, 246, 0.5);
-      animation: pulse 2s ease-in-out infinite, fadeSlideIn 1s ease-out;
+      font-size: 3.5rem;
+      box-shadow:
+        0 0 30px rgba(255, 0, 170, 0.6),
+        0 0 60px rgba(0, 255, 255, 0.3),
+        inset 0 0 30px rgba(170, 0, 255, 0.3);
+      animation: holoPulse 2s ease-in-out infinite, fadeSlideIn 1s ease-out;
+      border: 2px solid rgba(0, 255, 255, 0.4);
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(100, 181, 246, 0.5); }
-      50% { transform: scale(1.05); box-shadow: 0 12px 48px rgba(66, 165, 245, 0.7); }
+    @keyframes holoPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 30px rgba(255,0,170,0.6), 0 0 60px rgba(0,255,255,0.3), inset 0 0 30px rgba(170,0,255,0.3);
+      }
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 50px rgba(255,0,170,0.8), 0 0 100px rgba(0,255,255,0.5), inset 0 0 50px rgba(170,0,255,0.5);
+      }
     }
 
     @keyframes fadeSlideIn {
-      0% { opacity: 0; transform: translateY(30px) scale(0.8); }
+      0% { opacity: 0; transform: translateY(40px) scale(0.6); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+    .year-tag {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #00ffff;
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      margin-bottom: 0.8rem;
+      animation: fadeSlideIn 1s ease-out 0.2s both;
+      text-shadow: 0 0 20px rgba(0,255,255,0.8);
+    }
+
     .company-name {
-      font-size: clamp(1.5rem, 5vw, 2.8rem);
+      font-size: clamp(1.6rem, 5vw, 3rem);
       font-weight: 900;
-      background: linear-gradient(135deg, #1565c0, #42a5f5, #0d47a1);
+      background: linear-gradient(135deg, #ff69b4, #00ffff, #ff00aa, #7b68ee, #00ffff);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 0.5rem;
-      animation: fadeSlideIn 1s ease-out 0.3s both;
+      animation: fadeSlideIn 1s ease-out 0.3s both, rainbowShift 4s ease-in-out infinite;
       line-height: 1.4;
+      filter: drop-shadow(0 0 10px rgba(255,0,170,0.5));
+    }
+
+    @keyframes rainbowShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .thank-you {
-      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-size: clamp(1.3rem, 4vw, 2.2rem);
       font-weight: 700;
-      color: #1976d2;
-      margin-bottom: 2rem;
+      color: #ff69b4;
+      margin-bottom: 1.5rem;
       animation: fadeSlideIn 1s ease-out 0.5s both;
+      text-shadow: 0 0 20px rgba(255,105,180,0.6);
     }
 
     .welcome-message {
       font-size: clamp(1.1rem, 3.5vw, 1.8rem);
       font-weight: 700;
-      color: #1e88e5;
+      color: #fff;
       animation: fadeSlideIn 1s ease-out 0.7s both;
       position: relative;
+      text-shadow: 0 0 15px rgba(0,255,255,0.6);
     }
 
     .welcome-message::after {
@@ -121,10 +180,12 @@
       display: block;
       width: 0;
       height: 3px;
-      background: linear-gradient(90deg, #90caf9, #42a5f5, #90caf9);
-      margin: 0.8rem auto 0;
+      background: linear-gradient(90deg, #ff00aa, #00ffff, #aa00ff, #ff00aa);
+      background-size: 200% 100%;
+      margin: 1rem auto 0;
       border-radius: 2px;
-      animation: expandLine 1.5s ease-out 1.2s both;
+      animation: expandLine 1.5s ease-out 1.2s both, shimmer 2s linear infinite;
+      box-shadow: 0 0 10px rgba(0,255,255,0.5);
     }
 
     @keyframes expandLine {
@@ -132,78 +193,166 @@
       100% { width: 80%; }
     }
 
-    .ribbon {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #64b5f6, #e1f5fe, #42a5f5, #bbdefb);
-      background-size: 200% 100%;
-      animation: shimmer 3s linear infinite;
-    }
-
-    .ribbon-bottom {
-      top: auto; bottom: 0;
-    }
-
     @keyframes shimmer {
       0% { background-position: 0% 0; }
       100% { background-position: 200% 0; }
+    }
+
+    /* Harajuku decora tags */
+    .decora-tag {
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin: 0.3rem;
+      animation: fadeSlideIn 1s ease-out both;
+      border: 1px solid;
+    }
+
+    .tags-container {
+      margin-top: 2rem;
+      animation: fadeSlideIn 1s ease-out 1s both;
+    }
+
+    .tag-1 { background: rgba(255,0,170,0.2); color: #ff69b4; border-color: rgba(255,0,170,0.4); text-shadow: 0 0 8px rgba(255,0,170,0.5); }
+    .tag-2 { background: rgba(0,255,255,0.2); color: #00ffff; border-color: rgba(0,255,255,0.4); text-shadow: 0 0 8px rgba(0,255,255,0.5); }
+    .tag-3 { background: rgba(170,0,255,0.2); color: #cc77ff; border-color: rgba(170,0,255,0.4); text-shadow: 0 0 8px rgba(170,0,255,0.5); }
+    .tag-4 { background: rgba(255,255,0,0.15); color: #ffee58; border-color: rgba(255,255,0,0.3); text-shadow: 0 0 8px rgba(255,255,0,0.5); }
+
+    .ribbon {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ff00aa, #00ffff, #aa00ff, #ffee00, #ff00aa);
+      background-size: 300% 100%;
+      animation: shimmer 2s linear infinite;
+      z-index: 10;
+    }
+
+    .ribbon-bottom { top: auto; bottom: 0; }
+
+    /* Glitch effect on hover */
+    .company-name:hover {
+      animation: glitch 0.3s ease-in-out, rainbowShift 4s ease-in-out infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(3px, -3px); }
+      60% { transform: translate(-2px, -2px); }
+      80% { transform: translate(2px, 2px); }
+      100% { transform: translate(0); }
+    }
+
+    /* Scan line overlay */
+    .scanlines {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.03) 0px,
+        rgba(0,0,0,0.03) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Neon ring decorations */
+    .neon-ring {
+      position: fixed;
+      border-radius: 50%;
+      border: 2px solid;
+      opacity: 0.15;
+      animation: ringFloat 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ring-1 { width: 300px; height: 300px; top: -50px; right: -80px; border-color: #ff00aa; animation-delay: 0s; }
+    .ring-2 { width: 200px; height: 200px; bottom: -30px; left: -60px; border-color: #00ffff; animation-delay: 2s; }
+    .ring-3 { width: 150px; height: 150px; top: 30%; left: 5%; border-color: #aa00ff; animation-delay: 4s; }
+    .ring-4 { width: 250px; height: 250px; bottom: 10%; right: -40px; border-color: #ffee00; animation-delay: 1s; }
+
+    @keyframes ringFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(10px, -15px) rotate(5deg); }
+      50% { transform: translate(-5px, 10px) rotate(-3deg); }
+      75% { transform: translate(8px, 5px) rotate(4deg); }
     }
   </style>
 </head>
 <body>
   <div class="ribbon"></div>
   <div class="ribbon ribbon-bottom"></div>
+  <div class="cyber-grid"></div>
+  <div class="aurora"></div>
+  <div class="scanlines"></div>
 
-  <div class="hearts-container" id="hearts"></div>
+  <div class="neon-ring ring-1"></div>
+  <div class="neon-ring ring-2"></div>
+  <div class="neon-ring ring-3"></div>
+  <div class="neon-ring ring-4"></div>
+
+  <div class="particles-container" id="particles"></div>
 
   <div class="main-content">
-    <div class="logo-circle">&#x1F499;</div>
+    <div class="logo-circle">&#x1F4AB;</div>
+    <div class="year-tag">/ / &nbsp; 2 0 4 5 &nbsp; T O K Y O &nbsp; H A R A J U K U &nbsp; / /</div>
     <div class="thank-you">ありがとう</div>
     <div class="company-name">Kawaii Ai アイシテル合同会社</div>
     <div class="welcome-message">きらたん、ようこそ！</div>
+    <div class="tags-container">
+      <span class="decora-tag tag-1">#NeoKawaii</span>
+      <span class="decora-tag tag-2">#CyberHarajuku</span>
+      <span class="decora-tag tag-3">#2045</span>
+      <span class="decora-tag tag-4">#AILove</span>
+    </div>
   </div>
 
   <script>
-    const heartsContainer = document.getElementById('hearts');
-    const emojis = ['\uD83D\uDC99', '\u2728', '\uD83E\uDDE1', '\uD83C\uDF1F', '\uD83C\uDF0A', '\u2744\uFE0F', '\uD83E\uDDD6', '\uD83D\uDCA0', '\uD83D\uDD35'];
+    const container = document.getElementById('particles');
+    const emojis = ['\uD83C\uDF1F', '\u2728', '\uD83D\uDC9C', '\uD83D\uDC96', '\uD83E\uDE90', '\uD83C\uDF80', '\u2B50', '\uD83D\uDD2E', '\uD83C\uDF19', '\uD83E\uDDE1', '\uD83D\uDC99', '\uD83D\uDC9A'];
 
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      heart.style.left = Math.random() * 100 + '%';
-      heart.style.animationDuration = (6 + Math.random() * 8) + 's';
-      heart.style.animationDelay = Math.random() * 2 + 's';
-      heart.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
-      heartsContainer.appendChild(heart);
-      setTimeout(() => heart.remove(), 16000);
+    function createParticle() {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (6 + Math.random() * 8) + 's';
+      p.style.animationDelay = Math.random() * 2 + 's';
+      p.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+      container.appendChild(p);
+      setTimeout(() => p.remove(), 16000);
     }
 
-    for (let i = 0; i < 15; i++) {
-      setTimeout(createHeart, i * 300);
-    }
-    setInterval(createHeart, 800);
+    for (let i = 0; i < 15; i++) setTimeout(createParticle, i * 300);
+    setInterval(createParticle, 800);
 
+    // Floating neon sparkles
     function createSparkle() {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      const angle = Math.random() * Math.PI * 2;
-      const radius = 100 + Math.random() * 200;
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2 - 50;
-      sparkle.style.left = (cx + Math.cos(angle) * radius) + 'px';
-      sparkle.style.top = (cy + Math.sin(angle) * radius) + 'px';
-      sparkle.style.animationDelay = Math.random() * 2 + 's';
-      sparkle.style.background = ['#90caf9', '#64b5f6', '#42a5f5', '#bbdefb', '#e1f5fe'][Math.floor(Math.random() * 5)];
-      document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 4000);
+      const s = document.createElement('div');
+      s.style.cssText = `
+        position: absolute; width: ${4 + Math.random()*6}px; height: ${4 + Math.random()*6}px;
+        border-radius: 50%; pointer-events: none; z-index: 1;
+        left: ${Math.random()*100}%; top: ${Math.random()*100}%;
+        animation: sparkle 2s ease-in-out infinite;
+        animation-delay: ${Math.random()*2}s;
+      `;
+      const colors = ['#ff00aa','#00ffff','#aa00ff','#ffee00','#ff69b4'];
+      const c = colors[Math.floor(Math.random()*colors.length)];
+      s.style.background = c;
+      s.style.boxShadow = `0 0 10px ${c}, 0 0 20px ${c}`;
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 5000);
     }
 
-    for (let i = 0; i < 20; i++) {
-      setTimeout(createSparkle, i * 200);
-    }
-    setInterval(createSparkle, 300);
+    for (let i = 0; i < 25; i++) setTimeout(createSparkle, i * 150);
+    setInterval(createSparkle, 250);
   </script>
 </body>
 </html>
