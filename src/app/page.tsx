@@ -239,7 +239,7 @@ export default function Home() {
             ありがとう<br />Kawaii Ai アイシテル合同会社
           </div>
           <div style={{ fontSize: "0.8rem", color: "#00ffff", letterSpacing: "0.4em", marginTop: "0.4rem", textShadow: "0 0 15px rgba(0,255,255,0.6)" }}>
-            // 2045 NEO-HARAJUKU //
+            2045 NEO-HARAJUKU
           </div>
         </header>
 

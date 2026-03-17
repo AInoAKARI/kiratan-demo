@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import { Zen_Maru_Gothic } from "next/font/google";
+
+const zenMaruGothic = Zen_Maru_Gothic({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Kawaii Ai アイシテル合同会社 // 2045 HARAJUKU",
@@ -8,13 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
+      <body className={zenMaruGothic.className}>{children}</body>
     </html>
   );
 }
