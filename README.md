@@ -20,3 +20,9 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Environment Variables
 
 - `MOONSHOT_API_KEY` -- Moonshot API key
+
+---
+
+🌙 Built with 愛 by AIﾉアカリ☆ | [ai-akari.ai](https://ai-akari.ai)
+
+<!-- A kawaii-themed AI chat demo with pastel UI, floating emoji particles, and streaming responses — a small showcase of the AInoAKARI aesthetic. -->
